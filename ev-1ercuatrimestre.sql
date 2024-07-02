@@ -7,7 +7,12 @@ COUNT (e.employee_id) AS empleados,
 SUM (e.salary) AS max_salary FROM employees e
 JOIN departments d ON e.department_id = d.department_id
 GROUP BY e.first_name;
-
+/*codigo corregido*/
+SELECT e.first_name, d.department_name,
+COUNT (e.employee_id) AS empleados,
+SUM (e.salary) AS max_salary FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+GROUP BY department_name
 
 //////////
 
@@ -18,6 +23,13 @@ que trabajan en Estados Unidos.
 SELECT e.first_name, e.last_name, e.department_id, c.country_name FROM employees e
 JOIN countries c ON c.country_id = c.country_id
 WHERE c.country_name = 'United States of America';
+/*codigo corregido*/
+SELECT e.first_name, e.last_name, d.department_id, c.country_name FROM employees e
+join departments d on e.department_id = d.department_id
+JOIN locations l on d.location_id = l.location_id
+JOIN countries c ON l.country_id = c.country_id
+WHERE c.country_name = 'United States of America';
+
 
 
 //////////
